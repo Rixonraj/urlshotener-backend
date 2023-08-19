@@ -25,7 +25,7 @@ const urlShort = require('./models/shorturl_model.js')
 app.use(express.json())
 
 app.use(cors({
-    origin: `${process.env.FRONTEND_URL}`,
+    origin: [`${process.env.FRONTEND_URL}`,`${process.env.BACKEND_URL}`],
     credentials: true,
     exposedHeaders: ['Set-Cookie']
 }))
@@ -37,13 +37,7 @@ app.use(
     session({
         secret: "secretcode",
         resave: true,
-        saveUninitialized: true,
-        cookie: {
-            // sameSite: 'none',
-            // secure: true,
-            // maxAge: 1000 * 60 * 60 * 24 * 7,
-            httpOnly: true
-        }
+        saveUninitialized: true
     }))
 
 const transporter = nodemailer.createTransport({
@@ -185,7 +179,7 @@ app.post("/user/register", async (req, res) => {
 
 
     } catch (error) {
-
+        console.log("error", error)
     }
 })
 
