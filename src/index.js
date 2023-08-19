@@ -25,12 +25,12 @@ const urlShort = require('./models/shorturl_model.js')
 app.use(express.json())
 
 app.use(cors({
-    origin: `${process.env.FRONTEND_URL}`,
-    credentials: true,
-    exposedHeaders: ['Set-Cookie']
+    origin: '*',
+    // credentials: true,
+    // exposedHeaders: ['Set-Cookie']
 }))
 
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 
 
 app.use(
@@ -39,7 +39,7 @@ app.use(
         resave: true,
         saveUninitialized: true,
         cookie: {
-            sameSite: 'none',
+            // sameSite: 'none',
             // secure: true,
             // maxAge: 1000 * 60 * 60 * 24 * 7,
             httpOnly: true
