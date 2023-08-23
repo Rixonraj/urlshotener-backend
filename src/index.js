@@ -191,6 +191,7 @@ app.post("/user/register", async (req, res) => {
 
 
 app.put("/emailVerification/:id", async (req, res) => {
+    console.log("EMAIL VERIFICATION")
     console.log("req.params,", req.params)
     console.log("req.query,", req.query)
     try {
